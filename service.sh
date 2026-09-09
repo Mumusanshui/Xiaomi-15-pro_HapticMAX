@@ -42,10 +42,22 @@ RP=/data/adb/ksu/bin/resetprop
 [ -x "$RP" ] || RP=resetprop
 command -v "$RP" >/dev/null 2>&1 && "$RP" -f "$MODDIR/system.prop"
 
-settings put system haptic_feedback_level 5
-settings put system vibrate_on 1
-settings put system haptic_feedback_enabled 1
-settings put system keyboard_vibration_enabled 1
+# 尊重用户开关：关了振动就不要再打开
+VIB=$(settings get system vibrate_on)
+HFE=$(settings get system haptic_feedback_enabled)
+KBV=$(settings get system keyboard_vibration_enabled)
+echo "user vib=$VIB hfe=$HFE kbv=$KBV" >> "$LOG"
+
+if [ "$VIB" = "0" ] || [ "$HFE" = "0" ]; then
+  echo "skip settings: user disabled vibration" >> "$LOG"
+else
+  # 仅在原本已开启时抬高档位，不碰开关
+  settings put system haptic_feedback_level 5
+  [ "$VIB" = "1" ] && settings put system vibrate_on 1
+  [ "$HFE" = "1" ] && settings put system haptic_feedback_enabled 1
+  [ "$KBV" = "1" ] && settings put system keyboard_vibration_enabled 1
+  echo "settings applied (vibration already on)" >> "$LOG"
+fi
 
 D=$(find /sys/devices/platform/soc/9c0000.qcom,qupv3_i2c_geni_se/980000.i2c/i2c-0/0-0043/input -type d -name default 2>/dev/null | head -1)
 [ -n "$D" ] || { D=$(find /sys -name f0_comp_enable 2>/dev/null | head -1); D=${D%/f0_comp_enable}; }
