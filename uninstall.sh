@@ -1,6 +1,6 @@
 #!/system/bin/sh
-settings put system haptic_feedback_level 2
 rm -rf /data/adb/haptic_max
+settings put system haptic_feedback_level 2 2>/dev/null
 for p in \
   persist.vendor.audio.vibrator.aihaptic \
   vendor.aihaptic.interaction.transient_intensity \
@@ -27,7 +27,6 @@ for p in \
   persist.mihaptic.force_unlock_max \
   persist.mihaptic.short_pulse_boost \
   persist.mihaptic.long_vib_boost \
-  persist.sys.haptic_feedback_level \
   vendor.haptic.calibrate.done \
   vendor.haptic.force_skip_cal
 do resetprop --delete "$p" 2>/dev/null; done
