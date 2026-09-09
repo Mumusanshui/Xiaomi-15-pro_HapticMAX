@@ -26,12 +26,7 @@ RP=/data/adb/ksu/bin/resetprop
 [ -x "$RP" ] || RP=/data/adb/magisk/magiskresetprop
 [ -x "$RP" ] || RP=resetprop
 command -v "$RP" >/dev/null 2>&1 && "$RP" -f "$MODDIR/system.prop"
-# 开机强制打开振动并拉满触感级别
-settings put system haptic_feedback_level 5
-settings put system vibrate_on 1
-settings put system haptic_feedback_enabled 1
-settings put system keyboard_vibration_enabled 1
-echo "settings forced on" >> "$LOG"
+# 不再强制打开振动，尊重用户开关
 D=$(find /sys/devices/platform/soc/9c0000.qcom,qupv3_i2c_geni_se/980000.i2c/i2c-0/0-0043/input -type d -name default 2>/dev/null | head -1)
 [ -n "$D" ] || { D=$(find /sys -name f0_comp_enable 2>/dev/null | head -1); D=${D%/f0_comp_enable}; }
 [ -n "$D" ] && { echo 1 > "$D/f0_comp_enable" 2>/dev/null; echo 1 > "$D/redc_comp_enable" 2>/dev/null; }
