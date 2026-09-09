@@ -27,3 +27,4 @@ persist.mihaptic.short_pulse_boost=1
 persist.mihaptic.long_vib_boost=1
 vendor.haptic.calibrate.done=1
 vendor.haptic.force_skip_cal=1
+persist.sys.haptic_feedback_level=5
