@@ -26,18 +26,7 @@ RP=/data/adb/ksu/bin/resetprop
 [ -x "$RP" ] || RP=/data/adb/magisk/magiskresetprop
 [ -x "$RP" ] || RP=resetprop
 command -v "$RP" >/dev/null 2>&1 && "$RP" -f "$MODDIR/system.prop"
-# 尊重用户开关：关了振动就不强制打开
-VIB=$(settings get system vibrate_on)
-HFE=$(settings get system haptic_feedback_enabled)
-KBV=$(settings get system keyboard_vibration_enabled)
-echo "user vib=$VIB hfe=$HFE kbv=$KBV" >> "$LOG"
-if [ "$VIB" = "0" ] || [ "$HFE" = "0" ]; then
-  echo "skip settings: user disabled vibration" >> "$LOG"
-else
-  settings put system haptic_feedback_level 5
-  [ "$KBV" = "1" ] && settings put system keyboard_vibration_enabled 1
-  echo "settings applied (already on)" >> "$LOG"
-fi
+# 不修改系统振动开关，由用户自行控制
 D=$(find /sys/devices/platform/soc/9c0000.qcom,qupv3_i2c_geni_se/980000.i2c/i2c-0/0-0043/input -type d -name default 2>/dev/null | head -1)
 [ -n "$D" ] || { D=$(find /sys -name f0_comp_enable 2>/dev/null | head -1); D=${D%/f0_comp_enable}; }
 [ -n "$D" ] && { echo 1 > "$D/f0_comp_enable" 2>/dev/null; echo 1 > "$D/redc_comp_enable" 2>/dev/null; }
