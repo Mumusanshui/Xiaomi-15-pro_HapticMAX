@@ -1,84 +1,30 @@
-# ============================================
-# 小米15 Pro 马达系统级增强 - HapticMAX v1.0
-
-# ============================================
-
-# ===== AIHaptic 交互模式（日常点击/按键/滑动/手势）=====
-vendor.aihaptic.interaction.transient_intensity=650
-vendor.aihaptic.interaction.transient_sharpness=400
-vendor.aihaptic.interaction.continuous_intensity=650
-vendor.aihaptic.interaction.continuous_sharpness=400
-
-# ===== AIHaptic 提示模式（通知/来电/警告）=====
-vendor.aihaptic.warn.transient_intensity=650
+# HapticMAX — Xiaomi 15 Pro CS40L26A
+# 打字不走本模块 RTP/AIHaptic；下列参数服务点击/手势等
+persist.vendor.audio.vibrator.aihaptic=1
+vendor.aihaptic.interaction.transient_intensity=920
+vendor.aihaptic.interaction.transient_sharpness=350
+vendor.aihaptic.interaction.continuous_intensity=920
+vendor.aihaptic.interaction.continuous_sharpness=350
+vendor.aihaptic.warn.transient_intensity=880
 vendor.aihaptic.warn.transient_sharpness=400
-vendor.aihaptic.warn.continuous_intensity=650
+vendor.aihaptic.warn.continuous_intensity=880
 vendor.aihaptic.warn.continuous_sharpness=400
-
-# ===== AIHaptic 其他模式 =====
-vendor.aihaptic.ring.intensity=650
-vendor.aihaptic.notification.intensity=650
-vendor.aihaptic.keyboard.intensity=650
-vendor.aihaptic.alarm.intensity=650
-
-# ===== 谐振频率（15 Pro 0816马达 F0=155Hz，勿改！）=====
-ro.odm.mm.vibrator.resonant_frequency=155
-
-# ===== sys.haptic 系统交互震动参数 =====
-# 格式: 强度,锐度 - 保持官方默认 0,2（避免改动导致系统交互失效）
-sys.haptic.tap.normal=0,2
-sys.haptic.tap.light=0,2
-sys.haptic.tap.heavy=0,2
-sys.haptic.flick=0,2
-sys.haptic.flick.light=0,2
-sys.haptic.switch=0,2
-sys.haptic.mesh.heavy=0,2
-sys.haptic.mesh.normal=0,2
-sys.haptic.mesh.light=0,2
-sys.haptic.long.press=0,2
-sys.haptic.popup.normal=0,2
-sys.haptic.popup.light=0,2
-sys.haptic.pickup=0,2
-sys.haptic.putdown=0,2
-sys.haptic.scroll.edge=0,2
-sys.haptic.trigger.drawer=0,2
-sys.haptic.hold=0,2
-sys.haptic.runin=0,2
-sys.haptic.boundary_spatial=0,2
-sys.haptic.boundary_time=0,2
-sys.haptic.button_large=0,2
-sys.haptic.button_middle=0,2
-sys.haptic.button_small=0,2
-sys.haptic.gear_light=0,2
-sys.haptic.gear_heavy=0,2
-sys.haptic.keyboard=0,2
-sys.haptic.alert=0,2
-sys.haptic.zaxis_switch=0,2
-
-# ===== 高功率模式 =====
+vendor.aihaptic.keyboard.intensity=990
+vendor.aihaptic.notification.intensity=850
+vendor.aihaptic.ring.intensity=800
+vendor.aihaptic.alarm.intensity=800
 persist.vendor.haptic.boost_enable=1
 persist.vendor.haptic.high_power_mode=1
-
-# ===== 硬件增益极限 =====
 persist.vendor.haptic.force_max_gain=9.9
 persist.vendor.haptic.dynamic_clip_enable=0
 persist.vendor.haptic.impedance_auto_adjust=0
 persist.vendor.haptic.f0_auto_limit=0
-
-# ===== 小米触感增强 =====
+persist.vendor.haptic.auto_amp_limit=0
+persist.vendor.haptic.pcm_gain=50.0
+persist.vendor.haptic.pcm_max_gain=50.0
 persist.mihaptic.force_unlock_max=30
 persist.mihaptic.short_pulse_boost=1
 persist.mihaptic.long_vib_boost=1
-
-# ===== 校准完成标记 =====
 vendor.haptic.calibrate.done=1
 vendor.haptic.force_skip_cal=1
-
-# ===== 震动时长上限 =====
-ro.vibrator.max_duration=10000
-
-# ===== 系统触感级别 =====
 persist.sys.haptic_feedback_level=5
-
-# ===== 强度档位标记（400档：intensity 300-600）=====
-intensity=400

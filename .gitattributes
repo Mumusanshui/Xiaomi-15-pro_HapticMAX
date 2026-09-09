@@ -1,0 +1,7 @@
+# Shell scripts must stay LF for Android
+*.sh text eol=lf
+module.prop text eol=lf
+system.prop text eol=lf
+skip_mount text eol=lf
+*.bin binary
+*.zip binary
