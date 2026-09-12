@@ -1,10 +1,10 @@
 # HapticMAX — Xiaomi 15 Pro CS40L26A
 # 打字不走本模块 RTP/AIHaptic；下列参数服务点击/手势等
 persist.vendor.audio.vibrator.aihaptic=1
-vendor.aihaptic.interaction.transient_intensity=920
-vendor.aihaptic.interaction.transient_sharpness=350
-vendor.aihaptic.interaction.continuous_intensity=920
-vendor.aihaptic.interaction.continuous_sharpness=350
+vendor.aihaptic.interaction.transient_intensity=990
+vendor.aihaptic.interaction.transient_sharpness=600
+vendor.aihaptic.interaction.continuous_intensity=990
+vendor.aihaptic.interaction.continuous_sharpness=600
 vendor.aihaptic.warn.transient_intensity=880
 vendor.aihaptic.warn.transient_sharpness=400
 vendor.aihaptic.warn.continuous_intensity=880
